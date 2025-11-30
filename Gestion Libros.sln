@@ -22,6 +22,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución",
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentacion", "Presentacion", "{504996E5-C016-402A-AD37-B8FBCD954E08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion.Libro", "Presentacion.Libro\Presentacion.Libro.csproj", "{E3872DF0-DEEE-448E-ADCA-C7086A2A22BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,10 @@ Global
 		{B6169FD8-2B65-42F8-BAD7-674E5AC6A904}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6169FD8-2B65-42F8-BAD7-674E5AC6A904}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6169FD8-2B65-42F8-BAD7-674E5AC6A904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3872DF0-DEEE-448E-ADCA-C7086A2A22BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3872DF0-DEEE-448E-ADCA-C7086A2A22BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3872DF0-DEEE-448E-ADCA-C7086A2A22BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3872DF0-DEEE-448E-ADCA-C7086A2A22BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +61,7 @@ Global
 		{45C7871B-0A07-4558-AE80-5E99BF994AEB} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{0298414D-3957-4D90-BEE6-BCA1CA0FBAAE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{B6169FD8-2B65-42F8-BAD7-674E5AC6A904} = {BAF2C758-4944-467B-863F-04F26CA3CD81}
+		{E3872DF0-DEEE-448E-ADCA-C7086A2A22BD} = {504996E5-C016-402A-AD37-B8FBCD954E08}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {31413006-0549-4E3F-A055-2F4D7E0601E1}

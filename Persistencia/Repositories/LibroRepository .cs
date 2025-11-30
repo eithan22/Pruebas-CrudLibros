@@ -14,14 +14,18 @@ namespace Persistencia.Repositories
             _context = context;
         }
 
+        // 1. MODIFICAR GETALL: Solo traer los que NO están eliminados
         public async Task<IEnumerable<Libro>> GetAllAsync()
         {
-            return await _context.Libros.ToListAsync();
+            return await _context.Libros
+                .Where(l => l.Eliminado == false) // <--- FILTRO LÓGICO
+                .ToListAsync();
         }
 
         public async Task<Libro?> GetByIdAsync(int id)
         {
-            return await _context.Libros.FindAsync(id);
+            return await _context.Libros
+                .FirstOrDefaultAsync(l => l.Id == id && l.Eliminado == false);
         }
 
         public async Task<Libro> AddAsync(Libro libro)
@@ -37,12 +41,17 @@ namespace Persistencia.Repositories
             await _context.SaveChangesAsync();
         }
 
+        // 2. MODIFICAR DELETE: No borrar, solo marcar como Eliminado
         public async Task DeleteAsync(int id)
         {
             var libro = await _context.Libros.FindAsync(id);
             if (libro != null)
             {
-                _context.Libros.Remove(libro);
+                // EN LUGAR DE _context.Libros.Remove(libro);
+
+                libro.Eliminado = true; // <--- BORRADO LÓGICO
+                _context.Libros.Update(libro); // Lo actualizamos como "modificado"
+
                 await _context.SaveChangesAsync();
             }
         }
@@ -50,9 +59,10 @@ namespace Persistencia.Repositories
         public async Task<IEnumerable<Libro>> SearchAsync(string searchTerm)
         {
             return await _context.Libros
-                .Where(l => l.Titulo.Contains(searchTerm) ||
-                           l.Autor.Contains(searchTerm) ||
-                           l.Isbn.Contains(searchTerm))
+                .Where(l => !l.Eliminado && // <--- Agregar filtro aquí también
+                           (l.Titulo.Contains(searchTerm) ||
+                            l.Autor.Contains(searchTerm) ||
+                            l.Isbn.Contains(searchTerm)))
                 .ToListAsync();
         }
     }
