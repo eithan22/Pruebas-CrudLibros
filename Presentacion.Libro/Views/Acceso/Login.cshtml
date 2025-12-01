@@ -21,7 +21,12 @@
             </div>
             <button type="submit" id="btnIngresar" class="btn btn-primary w-100">Entrar</button>
         </form>
-        <div id="msgError" class="text-danger mt-2 text-center">@ViewBag.Error</div>
+        @if (ViewBag.Error != null)
+        {
+            <div id="msgError" class="alert alert-danger mt-2 text-center">
+                @ViewBag.Error
+            </div>
+        }
     </div>
 </body>
 </html>

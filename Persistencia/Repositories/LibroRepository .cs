@@ -14,11 +14,11 @@ namespace Persistencia.Repositories
             _context = context;
         }
 
-        // 1. MODIFICAR GETALL: Solo traer los que NO están eliminados
+       
         public async Task<IEnumerable<Libro>> GetAllAsync()
         {
             return await _context.Libros
-                .Where(l => l.Eliminado == false) // <--- FILTRO LÓGICO
+                .Where(l => l.Eliminado == false) 
                 .ToListAsync();
         }
 
@@ -41,16 +41,16 @@ namespace Persistencia.Repositories
             await _context.SaveChangesAsync();
         }
 
-        // 2. MODIFICAR DELETE: No borrar, solo marcar como Eliminado
+      
         public async Task DeleteAsync(int id)
         {
             var libro = await _context.Libros.FindAsync(id);
             if (libro != null)
             {
-                // EN LUGAR DE _context.Libros.Remove(libro);
+             
 
-                libro.Eliminado = true; // <--- BORRADO LÓGICO
-                _context.Libros.Update(libro); // Lo actualizamos como "modificado"
+                libro.Eliminado = true; 
+                _context.Libros.Update(libro); 
 
                 await _context.SaveChangesAsync();
             }
@@ -59,7 +59,7 @@ namespace Persistencia.Repositories
         public async Task<IEnumerable<Libro>> SearchAsync(string searchTerm)
         {
             return await _context.Libros
-                .Where(l => !l.Eliminado && // <--- Agregar filtro aquí también
+                .Where(l => !l.Eliminado && 
                            (l.Titulo.Contains(searchTerm) ||
                             l.Autor.Contains(searchTerm) ||
                             l.Isbn.Contains(searchTerm)))

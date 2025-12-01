@@ -7,7 +7,7 @@
         public string Autor { get; set; } = string.Empty;
         public string Isbn { get; set; } = string.Empty;
 
-        // NUEVO CAMPO PARA BORRADO LÓGICO
+       
         public bool Eliminado { get; set; } = false;
 
     }

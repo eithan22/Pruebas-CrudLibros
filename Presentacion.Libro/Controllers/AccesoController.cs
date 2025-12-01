@@ -21,8 +21,16 @@ namespace Presentacion.Libro.Controllers
             else
             {
                 ViewBag.Error = "Credenciales incorrectas";
-                return View();
+
+                
+                return View("Login");
             }
+        }
+
+        public IActionResult Salir()
+        {
+            HttpContext.Session.Clear(); 
+            return RedirectToAction("Login"); 
         }
     }
 }
